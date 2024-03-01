@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.6.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34607.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{4A92506A-3CF1-4E86-B9FD-D5F109655D87}"
 EndProject
@@ -16,7 +16,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notion.IntegrationTests", "Test\Notion.IntegrationTests\Notion.IntegrationTests.csproj", "{E0E2D7D5-E2AD-4587-AE88-BA5812A90451}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notion.IntegrationTests", "Test\Notion.IntegrationTests\Notion.IntegrationTests.csproj", "{E0E2D7D5-E2AD-4587-AE88-BA5812A90451}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rewbl.Notion.StudioY", "Rewbl.Notion.StudioY\Rewbl.Notion.StudioY.csproj", "{72219AAC-0615-4C6B-A4A5-E82F92B7594B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rewbl.Notion.StudioY.Test", "Rewbl.Notion.StudioY.Test\Rewbl.Notion.StudioY.Test.csproj", "{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +68,30 @@ Global
 		{E0E2D7D5-E2AD-4587-AE88-BA5812A90451}.Release|x64.Build.0 = Release|Any CPU
 		{E0E2D7D5-E2AD-4587-AE88-BA5812A90451}.Release|x86.ActiveCfg = Release|Any CPU
 		{E0E2D7D5-E2AD-4587-AE88-BA5812A90451}.Release|x86.Build.0 = Release|Any CPU
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B}.Debug|x64.Build.0 = Debug|Any CPU
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B}.Debug|x86.Build.0 = Debug|Any CPU
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B}.Release|x64.ActiveCfg = Release|Any CPU
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B}.Release|x64.Build.0 = Release|Any CPU
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B}.Release|x86.ActiveCfg = Release|Any CPU
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B}.Release|x86.Build.0 = Release|Any CPU
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}.Debug|x64.Build.0 = Debug|Any CPU
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}.Debug|x86.Build.0 = Debug|Any CPU
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}.Release|x64.ActiveCfg = Release|Any CPU
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}.Release|x64.Build.0 = Release|Any CPU
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}.Release|x86.ActiveCfg = Release|Any CPU
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +100,8 @@ Global
 		{BF5F85F3-901C-40B0-8357-A1919F89AE2E} = {4A92506A-3CF1-4E86-B9FD-D5F109655D87}
 		{B3AE07EA-49CC-4A86-A2D4-04E1FF00AB04} = {F474CF12-E2AC-4388-B764-BAE891D307B8}
 		{E0E2D7D5-E2AD-4587-AE88-BA5812A90451} = {F474CF12-E2AC-4388-B764-BAE891D307B8}
+		{72219AAC-0615-4C6B-A4A5-E82F92B7594B} = {4A92506A-3CF1-4E86-B9FD-D5F109655D87}
+		{FFD86D43-683C-4457-9A1F-C3BDBEAA03A1} = {4A92506A-3CF1-4E86-B9FD-D5F109655D87}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3C5C8AC9-88CA-4079-BC0B-C1A81248B0B1}
