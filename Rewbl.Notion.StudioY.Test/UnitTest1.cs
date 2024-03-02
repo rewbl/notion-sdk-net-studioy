@@ -1,4 +1,5 @@
 ﻿using Notion.Client;
+using Rewbl.Notion.StudioY.NotionTables;
 
 namespace Rewbl.Notion.StudioY.Test
 {
@@ -8,19 +9,44 @@ namespace Rewbl.Notion.StudioY.Test
         public void Setup()
         {
         }
-
+        
         [Test]
         public async Task Test1()
         {
             var client = NotionClientFactory.Create(new ClientOptions
             {
-                AuthToken = "secret_cGSFBPz0ezy05hFJI2MjYgXEdHMaaPE8LD38ZIElk20"
+                AuthToken = Config.AuthToken
             });
 
-            var filter = new RelationFilter("Current Google", isNotEmpty: true);
-            var pages = await client.Databases.QueryAsync("e30ad27589ef4a80a3e7ccba979aa05b",new DatabasesQueryParameters{Filter=filter});
-            var page = pages.Results[0];
+            var new_page = await client.Pages.CreateAsync(new PagesCreateParameters
+            {
+                Parent = new DatabaseParentInput {DatabaseId = Config.EmailDatabaseId},
+                Icon = new EmojiObject {Emoji = "\u2709\ufe0f"},
+                Properties = new Dictionary<string, PropertyValue>(new[]
+                {
+                    new KeyValuePair<string, PropertyValue>("Username",new RichTextPropertyValue()
+                    {
+                        RichText = new List<RichTextBase>()
+                        {
+                            new RichTextText
+                            {
+                                Text = new Text()
+                                {
+                                    Content = "Username1"
+                                }
+                            }
+                        }
+                    })
+                })
+            });
+            
+            
+            var filter = new RichTextFilter("Username", isNotEmpty: true);
 
+            var pages = await client.Databases.QueryAsync(Config.EmailDatabaseId,new DatabasesQueryParameters{Filter=filter});
+            var page = pages.Results[0] as Page;
+            var record = new EmailPage();
+            record.LoadProperties(page.Properties);
             var richText=new List<RichTextBase>
             {
                 new RichTextText()
