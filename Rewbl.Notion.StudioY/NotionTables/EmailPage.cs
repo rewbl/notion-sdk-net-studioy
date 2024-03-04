@@ -42,28 +42,70 @@ public class EmailPage
 
 public class NewEmailPage
 {
-    public string Email { get; set; }
-    public string Password { get; set; }
-    public string RecoveryEmail { get; set; }
+    public string Email { get; set; } = string.Empty;
 
+    public string Password { get; set; } = string.Empty;
+
+    public string RecoveryEmail { get; set; } = string.Empty;
+
+    public string Status { get; set; } = string.Empty;
+
+    public List<string> LinkTags { get; set; } = [];
+    
     public async Task<Page> CreateAsync(NotionClient client)
     {
+        var properties = new Dictionary<string, PropertyValue>(new[]
+            {
+                $"Blank Gmail: {Email}".TitleProperty(),
+                "Username".RichTextProperty(Email),
+                "Password".RichTextProperty(Password), 
+                "Recovery Email".RichTextProperty(RecoveryEmail),
+                "Status".SelectProperty(Status), 
+                "Link Tags".RelationProperty(LinkTags)
+            }
+            .Where(v => v.HasValue)
+            .Select(v => v!.Value));
         return  await client.Pages.CreateAsync(new PagesCreateParameters
         {
             Parent = new DatabaseParentInput {DatabaseId = Config.EmailDatabaseId},
             Icon = new EmojiObject {Emoji = "\u2709\ufe0f"},
-            Properties = new Dictionary<string, PropertyValue>(new[]
-            {
-                "Username".RichTextProperty(Email),
-                "Password".RichTextProperty(Password),
-                "Recovery Email".RichTextProperty(RecoveryEmail)
-            })
+            Properties = properties 
         });
         
     }
 
-    
+    [Test]
+    public async Task TestCreateOne()
+    {
+        var client = NotionClientFactory.Create(new ClientOptions
+        {
+            AuthToken = Config.AuthToken
+        });
 
+        Email = "Notion test4";
+        Status = "NewStatus";
+        LinkTags.Add("cb9fec6401834410afd2f6073223256d");
+        LinkTags.Add("72fb3f6e89bc4d3db1e87e61b540eabc");
+            
+        var page = await CreateAsync(client);
+    }
+
+    [Test]
+    public async Task TestRelation()
+    {
+        var client = NotionClientFactory.Create(new ClientOptions
+        {
+            AuthToken = Config.AuthToken
+        });
+        var tag_id = "cb9fec6401834410afd2f6073223256d";
+        
+        var filter = new RichTextFilter("Username",contains: "Notion test1");
+
+        var pages = await client.Databases.QueryAsync(Config.EmailDatabaseId,new DatabasesQueryParameters{Filter=filter});
+        var page = pages.Results[0] as Page;
+        
+        
+    }
     [Test]
     public async Task TestMe()
     {
